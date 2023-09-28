@@ -2,15 +2,17 @@
   "name": "wasm-test",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "type": "module",
   "engines": {
     "node": ">=16"
   },
   "scripts": {
-    "clean": "rm -f test-data/*.mel.png",
-    "start": "node .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -f tests/images/*-mel.png",
+    "compile-by-wabt": "wat2wasm src/test-wabt.wat -o src/test-wabt.wasm",
+    "test": "node tests",
+    "asbuild:debug": "asc src/assembly/index.ts --target debug",
+    "asbuild:release": "asc src/assembly/index.ts --target release",
+    "asbuild": "npm run asbuild:debug && npm run asbuild:release"
   },
   "repository": {
     "type": "git",
@@ -25,5 +27,14 @@
   "homepage": "https://github.com/justlep/wasm-test#readme",
   "dependencies": {
     "sharp": "^0.32.6"
+  },
+  "exports": {
+    ".": {
+      "import": "./build/release.js",
+      "types": "./build/release.d.ts"
+    }
+  },
+  "devDependencies": {
+    "assemblyscript": "^0.27.10"
   }
 }
