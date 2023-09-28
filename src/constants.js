@@ -9,7 +9,4 @@ const PROJECT_ROOT_PATH = resolve(fileURLToPath(import.meta.url), '../..');
  */
 export const resolveProjectPath = (relPath) => relPath ? join(PROJECT_ROOT_PATH, relPath) : PROJECT_ROOT_PATH;
 
-export const MEL_SPECTROGRAM_WIDTH = 800;
-export const MEL_SPECTROGRAM_HEIGHT = 256;
-
 export const COLOR_CHANNELS = 3;

@@ -1,14 +1,14 @@
 {
   "name": "wasm-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "PoC for converting linear spectrogram images into Mel scale using WebAssembly/AssemblyScript and sharp",
   "type": "module",
   "engines": {
     "node": ">=16"
   },
   "scripts": {
     "clean": "rm -f tests/images/*-mel.png",
-    "compile-by-wabt": "wat2wasm src/test-wabt.wat -o src/test-wabt.wasm",
+    "pretest": "npm run asbuild:debug",
     "test": "node tests",
     "asbuild:debug": "asc src/assembly/index.ts --target debug",
     "asbuild:release": "asc src/assembly/index.ts --target release",
@@ -19,8 +19,8 @@
     "url": "git+https://github.com/justlep/wasm-test.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Lennart Pegel <github@justlep.net>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/justlep/wasm-test/issues"
   },
